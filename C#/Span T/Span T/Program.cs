@@ -17,7 +17,6 @@ namespace Span_T
          *  3) Length. How much of this array we want to be able to access from the span.
          */
 
-
         /*
          * Extra Notes:
          * Due to span being implemented as a ref struct, it is stack only. Compilation will fail if attempting to use this as, say, a field in a class.
@@ -35,17 +34,16 @@ namespace Span_T
             SubstringWithoutSpan(str1);
 
             // Efficient
-            //SubstringWithSpan(str1);
+            SubstringWithSpan(str1);
 
             var str2 = "abc123doreme";
 
-            // Only accepts strings, which may be a problem when say, using a streamreader which returns an array of characters.
+            // Only accepts strings, which may be a problem when say, using a Stream Reader which returns an array of characters.
             MatchesFirstLetterWithoutSpan(str2, 'a');
 
-            // As span accepts any contigous memory, it will work with both string and char[].
+            // As span accepts any contiguous memory, it will work with both string and char[].
             MatchesFirstLetterWithSpan(str2, 'a');
             MatchesFirstLetterWithSpan(str2.ToCharArray(), 'a');
-
         }
 
         static void SubstringWithoutSpan(string text)
