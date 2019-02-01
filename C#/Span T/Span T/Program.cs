@@ -28,6 +28,7 @@ namespace Span_T
 
         static void Main(string[] args)
         {
+            // Span makes working substrings/sections of arrays more efficient:
             var str1 = "abc123doreme";
 
             // Inefficient
@@ -36,6 +37,9 @@ namespace Span_T
             // Efficient
             SubstringWithSpan(str1);
 
+
+
+            // Span is also more general, accepting any contiguous memory:
             var str2 = "abc123doreme";
 
             // Only accepts strings, which may be a problem when say, using a Stream Reader which returns an array of characters.
