@@ -16,4 +16,9 @@ namespace Span_T
         // Compiles successfully as ref struct is stack only.
         private ReadOnlySpan<char> x;
     }
+
+    // This interface implementation is pointless as ref structs cannot be boxed as that may cause it to live on the heap.
+    public ref struct StackOnly_RefStruct_Interfaced : IDisposable
+    {
+    }
 }
