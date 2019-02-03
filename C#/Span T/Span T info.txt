@@ -1,14 +1,14 @@
 General:
 	# Span is useful for safely representing and using contiguous, arbitrary memory. Without the span class you'd need to use unsafe code when working with unmanaged memory such as memory provided by native code.
 	# Span is a JIT construct, and can't be rewritten in C#.
+		#See MockSpan.cs to see why.
 	# Span implicitly casts from T[] to Span<T>.
          
 Structure:
 	In a basic sense, Span<T> can be thought of as having 3 fields:
-	1) Pointer to position in memory. This can be a string, a
-	2) Offset. I.e. if the pointer is to an array of integers, and the offset is 3, we will start at the third item.
-	3) Length. How much of this array we want to be able to access from the span starting at offset.
-		# See Structure.cs for an example.
+	1) Pointer to position in memory.
+	2) Length. How much of this block we want to be able to access from the span starting at pointer.
+		# See Structure.cs and MockSpan.cs for an example.
 
 Pros: 
 	1) Working with segments of arrays.
@@ -19,7 +19,9 @@ Pros:
 
 	3) Can safely refer to data on stack.
 		# See StackData.cs for an example.
-	
+
+	4) Uses ref returns so can index directly as if it were T[].
+		# See MockSpan.cs for an example.
 
 Cons:
 	1) Stack only means it cannot be used as fields on anything other than another ref struct.
