@@ -5,7 +5,7 @@ General:
 	# Span implicitly casts from T[] to Span<T>.
          
 Structure:
-	In a basic sense, Span<T> can be thought of as having 3 fields:
+	In a basic sense, Span<T> can be thought of as having 2 fields:
 	1) Pointer to position in memory.
 	2) Length. How much of this block we want to be able to access from the span starting at pointer.
 		# See Structure.cs and MockSpan.cs for an example.
