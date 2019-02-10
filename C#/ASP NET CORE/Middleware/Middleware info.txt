@@ -1,0 +1,30 @@
+General:
+A piece of middleware is a delegate that does a specific task. 
+Middleware forms what is called the "pipeline" which handles web requests and responses.
+
+Structure:
+Generally, nuget packages will have their own extension methods to call on IApplicationBuilder when configuring the middleware. 
+However you may want to write your own custom middleware. The structure is as follows:
+
+1) Code that operates on the request
+2) A delegate, conventionally named "next", which when invoked, runs the next piece of middleware.
+3) Code that operates on the response.
+See Structure.cs for an example.
+
+Run vs Use:
+You have have noticed too methods when writing your own middleware. App.Use, and App.Run. 
+
+What's the difference?
+The difference is simple; App.Use takes the "next" delegate, and App.Run does not.
+
+What does that mean?
+All that means, is that the you cannot call subsequent middleware from App.Run.
+See Run vs Use.cs for an example.
+
+Why would I use app.Run, then?
+You would use app.Run when it is the last piece of middleware and you have no need for a "next" delegate.
+
+Multiple pipelines:
+You might wonder, what if I want to configure different pipelines?
+IApplicationBuilder has a method, Map, to help us here. You can define custom routes to map different pipelines to.
+See Map.cs for an example.
