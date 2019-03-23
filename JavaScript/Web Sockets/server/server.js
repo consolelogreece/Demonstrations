@@ -18,5 +18,5 @@ io.on('connection', function(socket){
 });
 
 http.listen(3030, function(){
-  console.log('listening on *:3030');
+  console.log('listening on port 3030');
 });
